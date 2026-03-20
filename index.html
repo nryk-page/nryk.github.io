@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Clock</title>
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#time {
+    font-size: 80px;
+}
+#date {
+    font-size: 24px;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<div id="time"></div>
+<div id="date"></div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    const time =
+        String(now.getHours()).padStart(2, '0') + ":" +
+        String(now.getMinutes()).padStart(2, '0') + ":" +
+        String(now.getSeconds()).padStart(2, '0');
+
+    const date =
+        now.getFullYear() + "年" +
+        (now.getMonth()+1) + "月" +
+        now.getDate() + "日";
+
+    document.getElementById("time").textContent = time;
+    document.getElementById("date").textContent = date;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+</body>
+</html>
